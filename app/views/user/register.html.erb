@@ -1,0 +1,31 @@
+<div class="row">
+	<div class="panel panel-info">
+		<div class="panel-heading">用户注册</div>
+		<div class="panel-body">
+			<%= bootstrap_flash %>
+		    <form class="form-horizontal" role="form" action="/user/create" method="post">
+			  <div class="form-group">
+			    <label for="inputPassword" class="col-sm-2 control-label">邮箱</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" name="inputEmail" placeholder="Email">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label for="inputPassword" class="col-sm-2 control-label">密码</label>
+			    <div class="col-sm-10">
+			      <input type="password" class="form-control" name="inputPassword" placeholder="Password">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label for="inputPassword" class="col-sm-2 control-label">确认密码</label>
+			    <div class="col-sm-10">
+			      <input type="password" class="form-control" name="inputSecondPassword" placeholder="Password">
+			    </div>
+			  </div>
+			  <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value =>   
+form_authenticity_token) %>
+			  <button type="submit" class="btn btn-primary col-md-2 col-md-offset-6">注册</button>		  
+			</form>
+		</div>
+	</div>
+</div>
