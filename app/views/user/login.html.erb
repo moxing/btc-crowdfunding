@@ -18,7 +18,8 @@
 			  </div>
 			  <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value =>   
 form_authenticity_token) %>
-			  <button type="submit" class="btn btn-primary col-md-2 col-md-offset-6">登录</button>		  
+			  <button type="submit" class="btn btn-primary col-md-2 col-md-offset-6">登录</button>
+			  <%= link_to '使用Oklink账号', @oklink_auth_url,  class: 'btn'%>	  
 			</form>
 		</div>
 	</div>

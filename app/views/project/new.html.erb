@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="panel panel-info">
-		<div class="panel-heading">新建众筹项目</div>
+		<div class="panel-heading">新建众筹项目<% if @project %> - <%= @project.name %> <% end %></div>
 		<div class="panel-body">
 			<%= bootstrap_flash %>
 		    <form class="form-horizontal" role="form" action="/project/create" method="post">
@@ -18,45 +18,62 @@
 			    </div>
 			  </div>
 			  <% else %>
-			  <div  class="form-group">
-   			     <label for="inputName" class="col-sm-2 control-label">总金额</label>
-			     <div class="col-sm-3 input-group">
-                     <input type="text" class="form-control" name="inputAmount">
-			  	     <span class="input-group-addon">BTC</span>
-                 </div>
+			  <div class="row">
+			      <div class="col-sm-6">
+			      	  <div class="row">
+					  <div  class="form-group">
+		   			     <label for="inputName" class="col-sm-5 control-label">总金额</label>
+					     <div class="col-sm-6 input-group">
+		                     <input type="text" class="form-control" name="inputAmount">
+					  	     <span class="input-group-addon">BTC</span>
+		                 </div>
+					  </div>
+					  <div  class="form-group">
+		   			     <label for="inputName" class="col-sm-5 control-label">最小启动金额</label>
+					     <div class="col-sm-6 input-group">
+		                     <input type="text" class="form-control" name="inputMinAmount">
+					  	     <span class="input-group-addon">BTC</span>
+		                 </div>
+					  </div>
+					  <div  class="form-group">
+		   			     <label for="inputName" class="col-sm-5 control-label">人数</label>
+					     <div class="col-sm-6 input-group">
+		                     <input type="text" class="form-control" name="inputPeple">
+		                 </div>
+					  </div>			  
+					  <div  class="form-group">
+		   			     <label for="inputName" class="col-sm-5 control-label">启动时间</label>
+					     <div class="col-sm-6 input-group">
+		                     <input type="text" class="form-control form_datetime" name="inputStar">
+		                 </div>
+					  </div> 
+					  <div  class="form-group">
+		   			     <label for="inputName" class="col-sm-5 control-label">截止时间</label>
+					     <div class="col-sm-6 input-group">
+		                     <input type="text" class="form-control form_datetime" name="inputEnd">
+		                 </div>
+					  </div>
+					  <%= tag(:input, :type => "hidden", :name => "project_id", :value => @project.id ) %>			  
+					  <script type="text/javascript">
+					    $(".form_datetime").datetimepicker();
+					  </script>
+					  </div>		      	
+			      </div>
+			      <div class="col-sm-6">
+					  <div  class="form-group">
+		   			     <label for="inputName" class="col-sm-3 control-label">最小金额</label>
+					     <div class="col-sm-6 input-group">
+		                     <input type="text" class="form-control form_datetime" name="inputUnit">
+		                 </div>
+					  </div>                  
+			      </div>
+
 			  </div>
-			  <div  class="form-group">
-   			     <label for="inputName" class="col-sm-2 control-label">最小启动金额</label>
-			     <div class="col-sm-3 input-group">
-                     <input type="text" class="form-control" name="inputMinAmount">
-			  	     <span class="input-group-addon">BTC</span>
-                 </div>
-			  </div>
-			  <div  class="form-group">
-   			     <label for="inputName" class="col-sm-2 control-label">人数</label>
-			     <div class="col-sm-3 input-group">
-                     <input type="text" class="form-control" name="inputPeple">
-                 </div>
-			  </div>			  
-			  <div  class="form-group">
-   			     <label for="inputName" class="col-sm-2 control-label">启动时间</label>
-			     <div class="col-sm-3 input-group">
-                     <input type="text" class="form-control form_datetime" name="inputStar">
-                 </div>
-			  </div> 
-			  <div  class="form-group">
-   			     <label for="inputName" class="col-sm-2 control-label">截止时间</label>
-			     <div class="col-sm-3 input-group">
-                     <input type="text" class="form-control form_datetime" name="inputEnd">
-                 </div>
-			  </div>			  
-			  <script type="text/javascript">
-			    $(".form_datetime").datetimepicker();
-			  </script>
+
 			  <% end %>
 			  <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value =>   
 form_authenticity_token) %>
-			  <button type="submit" class="btn btn-primary col-md-2 col-md-offset-6">下一步</button>		  
+			  <button type="submit" class="btn btn-primary col-md-2 col-sm-offset-5">下一步</button>		  
 			</form>
 		</div>
 	</div>	

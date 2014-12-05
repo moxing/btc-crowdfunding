@@ -1,3 +1,4 @@
+require "oauth2"
 class UserController < ApplicationController
   before_action :param_valudate, :only => [:create]
 
@@ -12,6 +13,9 @@ class UserController < ApplicationController
   	    flash[:error] = "邮箱或密码不符"  	  	
   	  end
     end
+    require "#{Rails.root}/lib/oklink_oauth" 
+    oauth = OklinkOauth.new
+    @oklink_auth_url = oauth.authorize_url
   end  
 
   def register
@@ -19,6 +23,8 @@ class UserController < ApplicationController
   end
 
   def logout
+     reset_session
+     redirect_to "/"
   end
 
   def create
@@ -47,3 +53,4 @@ class UserController < ApplicationController
     end
   end 
 end
+

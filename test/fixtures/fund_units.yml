@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  unit: 9.99
+  people: 1
+  project_id: 
+
+two:
+  unit: 9.99
+  people: 1
+  project_id: 

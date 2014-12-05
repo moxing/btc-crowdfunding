@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'oauth/callback'
+
   get 'project/index'
 
   get 'project/new'
