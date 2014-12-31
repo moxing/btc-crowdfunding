@@ -7,7 +7,7 @@ class CreateProjectDetails < ActiveRecord::Migration
       t.decimal :raise_amount
       t.datetime :start
       t.datetime :end
-
+      t.belongs_to :project
       t.timestamps
     end
   end

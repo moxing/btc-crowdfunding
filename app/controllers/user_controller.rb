@@ -41,7 +41,7 @@ class UserController < ApplicationController
       user.save
 
       flash[:success] = "感谢您注册BCF"
-      redirect_to controller: :project, action: :index
+      redirect_to controller: :user, action: :login
   end
 
   private

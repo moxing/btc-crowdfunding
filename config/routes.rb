@@ -1,15 +1,8 @@
 Rails.application.routes.draw do
+  
   get 'oauth/callback'
 
-  get 'project/index'
-
-  get 'project/new'
-
-  get 'project/new/:id' => 'project#new', as: 'project'
-
-  get 'project/create'
-
-  get 'project/list'
+  resources 'project'
 
   get 'user/login'
 
@@ -23,6 +16,7 @@ Rails.application.routes.draw do
 
   post 'project/create'
 
+  get '', to: 'project#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

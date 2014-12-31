@@ -1,20 +1,26 @@
 class ProjectController < ApplicationController
+
+
   def index
   	unless session[:current_user_id].nil?
   	 	@projects = Project.where user_id = session[:current_user_id]
       # render text:  session[:current_user_id]
   	else
-  		@projects = Project.all
+  		@projects = Project.where status = Project::STATUS_ONLINE
   	end
   end
 
   def new
-  	  @project = Project.find_by("id = ? AND user_id = ?", params[:id], session[:current_user_id])  unless params[:id].nil?
-      # render json: @project.to_json 
+
+      unless params[:id].nil?   
+  	      @project = Project.find_by("id = ? AND user_id = ?", params[:id], session[:current_user_id])  
+          render json: @project.to_json 
+      end
   end
 
   def create
       unless params[:inputName].nil? && params[:inputDesc].nil?
+        
   		  @project = Project.create name: params[:inputName], desc: params[:inputDesc], status: 0
       else
 

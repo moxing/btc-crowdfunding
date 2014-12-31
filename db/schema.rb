@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20141205102945) do
     t.datetime "end"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "project_id"
   end
 
   create_table "projects", force: true do |t|
@@ -41,10 +42,9 @@ ActiveRecord::Schema.define(version: 20141205102945) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.integer  "project_detail_id"
   end
 
-  add_index "projects", ["project_detail_id"], name: "index_projects_on_project_detail_id"
+  add_index "project_details", ["project_id"], name: "index_projects_detail_on_project_id"
   add_index "projects", ["user_id"], name: "index_projects_on_user_id"
 
   create_table "users", force: true do |t|
